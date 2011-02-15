@@ -2,7 +2,7 @@
 \alias{.double2singlePrecision}
 
 \title{
-    Convert double to single precision.
+    Converts double to single precision.
 }
 \description{
     This method simulate the conversion of floating point numbers from double

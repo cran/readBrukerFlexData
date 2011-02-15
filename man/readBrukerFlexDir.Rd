@@ -2,10 +2,10 @@
 \alias{readBrukerFlexDir}
 
 \title{
-Reads recursivly mass spectrometry data in Bruker Daltonics' XMASS format.
+Reads recursively mass spectrometry data in Bruker Daltonics' XMASS format.
 }
 \description{
-Reads recursivly all mass spectrometry data in Bruker Daltonics' XMASS format in
+Reads recursively all mass spectrometry data in Bruker Daltonics' XMASS format in
 a specified directory.
 }
 \usage{
@@ -14,7 +14,7 @@ readBrukerFlexDir(brukerFlexDir, removeCalibrationScans=TRUE,
 }
 \arguments{
     \item{brukerFlexDir}{
-        Path to \emph{directory} which should be read recursivly.
+        Path to \emph{directory} which should be read recursively.
 }
     \item{removeCalibrationScans}{
         logical. If TRUE all scans in directories called [Cc]alibration will be
@@ -26,7 +26,7 @@ readBrukerFlexDir(brukerFlexDir, removeCalibrationScans=TRUE,
 }
     \item{useHpc}{
         logical. Should Bruker Daltonics' High Precision
-        Calibration be used if avaiable? (see also: \code{\link{.hpc}})
+        Calibration be used if available? (see also: \code{\link{.hpc}})
 }
     \item{useSpectraNames}{
         logical. If TRUE all list elements get an unique name from metaData
@@ -51,7 +51,7 @@ A list of spectra.
         A vector of intensity values. 
 }
     \item{[[1]]$metaData}{
-        A list of metaData depending on readed spectrum.
+        A list of metaData depending on read spectrum.
 }
 }
 \author{

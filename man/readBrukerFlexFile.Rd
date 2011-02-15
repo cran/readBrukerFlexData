@@ -6,7 +6,7 @@ Reads mass spectrometry data in Bruker Daltonics' XMASS format.
 }
 \description{
 Reads mass spectrometry data in Bruker Daltonics' XMASS format used by
-Bruker Daltonics' mass spectrometer of flex-family.
+Bruker Daltonics' mass spectrometer of *flex series.
 }
 \usage{
 readBrukerFlexFile(fidFile, removeMetaData=FALSE, useHpc=TRUE, verbose=FALSE)
@@ -21,7 +21,7 @@ readBrukerFlexFile(fidFile, removeMetaData=FALSE, useHpc=TRUE, verbose=FALSE)
 }
     \item{useHpc}{
         logical. Should Bruker Daltonics' High Precision
-        Calibration be used if avaiable? (see also: \code{\link{.hpc}})
+        Calibration be used if available? (see also: \code{\link{.hpc}})
 }
     \item{verbose}{
         logical. Print verbose messages?
@@ -34,7 +34,7 @@ readBrukerFlexFile has to import the following data to calculating mass from
 \tabular{lll}{
 acqu-value \tab becomes metaData \tab description \cr
 $TD \tab metaData$number \tab total number of measured time periods \cr
-$DELAY \tab metaData$timeDelay \tab first measured intesity after 
+$DELAY \tab metaData$timeDelay \tab first measured intensity after 
   \emph{metaData$timeDelay} ns \cr
 $DW \tab metaData$timeDelta \tab ns between measured time periods \cr
 $ML1 \tab metaData$calibrationConstants[1] \tab mass calibration constant \cr
@@ -45,27 +45,29 @@ $ML3 \tab metaData$calibrationConstants[3] \tab mass calibration constant \cr
 If High Precision Calibration (HPC) is used, readBrukerFlexFile needs:
 \tabular{lll}{
 acqu-value \tab becomes metaData \tab description \cr
-$HPClBHi \tab metaData$hpc$limits[\dQuote{maxMass}] \tab  upper mass treshold 
+$HPClBHi \tab metaData$hpc$limits[\dQuote{maxMass}] \tab  upper mass threshold 
 \cr
 $HPClBLo \tab metaData$hpc$limits[\dQuote{minMass}] \tab lower mass threshold 
 \cr
-$HPClOrd \tab metaData$hpc$order \tab polynom order \cr
+$HPClOrd \tab metaData$hpc$order \tab polynomial order \cr
 $HPClUse \tab metaData$hpc$use \tab maybe using of HPC? (seems to be always
 \dQuote{yes} in our test data) \cr
-$HPCStr \tab metaData$hpc$coefficients \tab polynom coefficients in a string \cr
+$HPCStr \tab metaData$hpc$coefficients \tab polynomial coefficients in a 
+string \cr
 }
 
 readBrukerFlexFile tries also to import [optional]: \cr
 \tabular{lll}{
 acqu-value \tab becomes metaData \tab description \cr
 DATATYPE \tab metaData$dataType \tab e.g CONTINUOUS MASS SPECTRUM \cr
-SPECTROMETER/DATASYSTEM \tab metaData$dataSystem \tab e.g. Bruker Flex Series \cr
+SPECTROMETER/DATASYSTEM \tab metaData$dataSystem \tab e.g. Bruker Flex 
+Series \cr
 .SPECTROMETER TYPE \tab metaData$spectrometerType \tab e.g. TOF \cr
 .INLET \tab metaData$inlet \tab DIRECT \cr
 .IONIZATION MODE \tab metaData$ionizationMode \tab e.g. LD+ \cr
 $DATE \tab metaData$date \tab same as $AQ_DATE but often only "0" \cr
 $ACQMETH \tab metaData$acquisitionMethod \tab path to method file \cr
-$AQ_DATE \tab metaData$acquisitionDate \tab acquisiton date \cr
+$AQ_DATE \tab metaData$acquisitionDate \tab acquisition date \cr
 $AQ_mod \tab metaData$acquisitionMode \tab acquisition mode \cr
 $AQOP_m \tab metaData$acquisitionOperatorMode, metaData$tofMode \tab LINEAR /
 REFLECTOR \cr
@@ -84,13 +86,15 @@ $InstTyp \tab metaData$instrumentType \tab instrument type \cr
 $Masserr \tab metaData$massError \tab initial mass error in ppm \cr
 $NoSHOTS \tab metaData$laserShots \tab number of applied laser shots \cr
 $PATCHNO \tab metaData$patch \tab sample postion on target \cr
-$PATH \tab metaData$path \tab original file path (on bruker flex series controller pc) \cr
+$PATH \tab metaData$path \tab original file path (on Bruker *flex series 
+controller PC) \cr
 $REPHZ \tab metaData$laserRepetition \tab laser repetition rate in Hz \cr
-$SPOTNO \tab metaData$spot \tab same as \emph{$PATCHNO} (in older files often empty, thats why
-readBrukerFlexFile uses \emph{$PATHNO} instead) \cr
+$SPOTNO \tab metaData$spot \tab same as \emph{$PATCHNO} (in older files often 
+empty, that's why readBrukerFlexFile uses \emph{$PATHNO} instead) \cr
 $SPType \tab metaData$spectrumType \tab e.g. TOF \cr
 $TgIDS \tab metaData$target$id \tab target ids \cr
-$TgCount \tab metaData$target$count \tab number of measurement with this target \cr
+$TgCount \tab metaData$target$count \tab number of measurement with this 
+target \cr
 $TgSer \tab metaData$target$serialNumber \tab target serial number \cr
 $TgTyp \tab metaData$target$typeNumber \tab target type number \cr
 }
@@ -115,7 +119,7 @@ A list of spectra and metadata.
         A vector of intensity values. 
 }
     \item{metaData}{
-        A list of metaData depending on readed spectrum.
+        A list of metaData depending on read spectrum.
 }
 }
 \author{

@@ -1,4 +1,4 @@
-## $Id: readBrukerFlexData.R 381 2011-02-15 15:58:49Z sgibb $
+## $Id:readBrukerFlexData.R 381 2011-02-15 15:58:49Z sgibb $
 ##
 ## Copyright 2010-2011 Sebastian Gibb
 ## <mail@sebastiangibb.de>
@@ -27,8 +27,8 @@
 ##  brukerFlexDir: path to root dir of fid files e.g. data/
 ##  removeCalibrationScans: default TRUE, don't read spectra from calibration
 ##                          scans
-##  removeMetaData: see .readBrukerFlexFile for details (default: FALSE)
-##  useHpc: TRUE/FALSE see .hpc/.readBrukerFlexFile for details 
+##  removeMetaData: see readBrukerFlexFile for details (default: FALSE)
+##  useHpc: TRUE/FALSE see .hpc/readBrukerFlexFile for details 
 ##          [default: useHPC=TRUE]
 ##  useSpectraNames: TRUE/FALSE [default: useSpectraNames=TRUE]
 ##  verbose: TRUE/FALSE [default: verbose=FALSE]
@@ -112,7 +112,7 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
 ##  fidFile: path to fid file e.g. Pankreas_HB_L_061019_A10/0_a19/1/1SLin/fid
 ##  removeMetaData: if TRUE => don't return metadata to save memory 
 ##                  [default: removeMetaData=TRUE]
-##  useHpc: TRUE/FALSE use HPC if avaiable? [default: useHpc=TRUE]
+##  useHpc: TRUE/FALSE use HPC if available? [default: useHpc=TRUE]
 ##  verbose: TRUE/FALSE [default: verbose=FALSE]
 ##
 ## returns:
@@ -151,7 +151,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     ## REFLECTOR mode
     ## for details see "Release Notes for CompassXport 3.0.3" 
     ## cap. 6 "Filtering of Zero Intensities"
-    ## "Bruker Daltonics’ Aqcuisition Software will compress Analysis raw 
+    ## "Bruker Daltonics’ Acquisition Software will compress Analysis raw 
     ## data. To save on operation time and to keep export file sizes small,
     ## CompassXport 3.0.3 will filter out zero (0.0) intensities
     ## when exporting to mzXML or mzData ..."
@@ -214,18 +214,18 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ##      => metaData$calibrationConstants[3]
 ##
 ##  if we want to use High Precision Calibration (HPC), we need:
-##  $HPClBHi: upper mass treshold
+##  $HPClBHi: upper mass threshold
 ##      => metaData$hpcLimits["maxMass"]
 ##  $HPClBLo: lower mass threshold
 ##      => metaData$hpcLimits["minMass"]
-##  $HPClOrd: polynom order
+##  $HPClOrd: polynomial order
 ##      => metaData$hpcOrder
 ##  $HPClUse: maybe using of HPC? (seems always be "yes" in our test data)
 ##      => metaData$hpcUse
-##  $HPCStr: polynom coefficients in a string
+##  $HPCStr: polynomial coefficients in a string
 ##      => metaData$hpcCoefficients
 ##
-##  we try to import [optinal]:
+##  we try to import [optional]:
 ##  DATATYPE
 ##  SPECTROMETER/DATASYSTEM
 ##      => metaData$dataSystem
@@ -274,13 +274,13 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ##      => metaData$laserShots
 ##  $SPType
 ##      => metaData$spectrumType
-##  $PATCHNO: sample postion on target
+##  $PATCHNO: sample position on target
 ##      => metaData$patch
-##  $PATH: original file path (on bruker flex series controller pc)
+##  $PATH: original file path (on Bruker flex series controller PC)
 ##      => metaData$path
 ##  $REPHZ
 ##      => metaData$laserRepetition
-##  $SPOTNO: same as $PATCHNO (in older files often empty, thats why we use 
+##  $SPOTNO: same as $PATCHNO (in older files often empty, that's why we use 
 ##      $PATHNO instead)
 ##      => metaData$spot
 ##  $TgIDS: target ids
@@ -568,7 +568,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ## function .sampleName
 ##  guess name of current spot from filename
 ##
-##  WARNING: if the 4th upper dir hasn't an unique name you will get
+##  WARNING: if the 4th upper directory hasn't an unique name you will get
 ##  equal names for your spot list
 ##
 ##  e.g. the following will create a list with 4 elements but
@@ -707,7 +707,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ##      ##$Hpcgc2= -0.0467016003168749 
 ##
 ## params:
-##  mass: vector with alreday calculated mass (used .tof2mass)
+##  mass: vector with already calculated mass (used .tof2mass)
 ##  minMass: metaData$hpc$minMass
 ##  maxMass: metaData$hpc$maxMass
 ##  hpcCoeefficents: metaData$hpc$coefficients

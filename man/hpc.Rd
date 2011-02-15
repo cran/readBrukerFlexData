@@ -2,12 +2,12 @@
 \alias{.hpc}
 
 \title{
-High Precision Calibration.
+High Precision Calibration
 }
 \description{
 Only basic support (not 100\% identical results) for Bruker Daltonics' HPC.
 HPC stands for \bold{H}igh \bold{P}recision \bold{C}alibration.\cr
-This is an internal function and should normaly not used by the user.
+This is an internal function and should normally not used by the user.
 }
 \usage{
 .hpc(mass, minMass, maxMass, hpcCoefficients)
@@ -17,11 +17,11 @@ This is an internal function and should normaly not used by the user.
         vector of doubles. Mass calculated traditionally.
 }
     \item{minMass}{
-        double. Lower Treshold for HPC. HPC is only defined for a
+        double. Lower Threshold for HPC. HPC is only defined for a
         range of mass.
 }
     \item{maxMass}{
-        double. Upper Treshold for HPC. HPC is only defined for a
+        double. Upper Threshold for HPC. HPC is only defined for a
         range of mass.
 }
     \item{hpcCoefficients}{
@@ -58,8 +58,6 @@ Sebastian Gibb
 }
 \note{
 Please note that .hpc is not correct! You have been warned.
-(That is why it would not used by readBrukerFlexData until now. If you
-want to use .hpc you have to call in manually.)
 }
 
 \seealso{
@@ -100,7 +98,7 @@ spec$metaData$backup$mass32 <-
     readBrukerFlexData:::.double2singlePrecision(spec$metaData$backup$mass);
 spec$spectrum$mass32 <- readBrukerFlexData:::.double2singlePrecision(spec$spectrum$mass);
 
-## calculate deviances
+## calculate deviance
 d <- spec$metaData$backup$mass32-cpSpecHPCMzXML$mass;
 dHPC <- spec$spectrum$mass32-cpSpecHPCMzXML$mass;
 
