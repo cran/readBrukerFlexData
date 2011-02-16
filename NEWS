@@ -1,6 +1,12 @@
 RELEASE HISTORY OF THE "readBrukerFlexData" PACKAGE
 ===================================================
 
+Version 1.0.3 [2011-02-16]:
+- Fix directory separator in an example 
+
+Version 1.0.2 [2011-02-16]:
+- Fix directory separator in regular expression
+
 Version 1.0.1 [2011-02-16]:
 - Fix example code
 - Minor typos in documentation corrected 

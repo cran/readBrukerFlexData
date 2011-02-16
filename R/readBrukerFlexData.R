@@ -360,7 +360,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ##  $tofMode
 ##
 .readAcquFile <- function(fidFile, verbose=FALSE) {
-    acquFile <- sub(pattern="/fid$", x=fidFile, replacement="/acqu");
+    acquFile <- sub(pattern="fid$", x=fidFile, replacement="acqu");
 
     if (verbose)
         message("Reading metadata from ", sQuote(acquFile), " ...");

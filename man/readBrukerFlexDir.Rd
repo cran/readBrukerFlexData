@@ -69,7 +69,7 @@ exampleDirectory <- system.file("Examples", package="readBrukerFlexData");
 
 ## read example spectra
 spec <- readBrukerFlexDir(paste(exampleDirectory,
-    "2010_05_19_Gibb_C8_A1/", sep="/"));
+    "2010_05_19_Gibb_C8_A1", sep="/"));
 
 ## plot spectra
 plot(spec[[1]]$spectrum$mass, spec[[1]]$spectrum$intensity, type="n");
