@@ -1,6 +1,10 @@
 RELEASE HISTORY OF THE "readBrukerFlexData" PACKAGE
 ===================================================
 
+Version 1.0.4 [2011-02-19]:
+- Replace library reference in cpSpecHpcMzXml-data to readMzXmlData  
+- Replace all paste(directory, file, sep="/") by file.path(directory, file) 
+
 Version 1.0.3 [2011-02-16]:
 - Fix directory separator in an example 
 

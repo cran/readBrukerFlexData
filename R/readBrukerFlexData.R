@@ -43,7 +43,7 @@
 ##  brukerFlexDir="./hc"
 ##
 ## returns:
-##  a list with metadata and spectra
+##  a list of spectra with spectrum$mass, spectrum$intensity and metadate
 ##
 readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
         removeMetaData=FALSE, useHpc=TRUE, useSpectraNames=TRUE,
@@ -77,7 +77,7 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
 
     ## generate "path/files"
     files <- sapply(files, function(x) {
-            x <- paste(brukerFlexDir, x, sep="/");
+            x <- file.path(brukerFlexDir, x);
             return(x);
         });
 
@@ -111,14 +111,14 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
 ## params:
 ##  fidFile: path to fid file e.g. Pankreas_HB_L_061019_A10/0_a19/1/1SLin/fid
 ##  removeMetaData: if TRUE => don't return metadata to save memory 
-##                  [default: removeMetaData=TRUE]
+##                  [default: removeMetaData=FALSE]
 ##  useHpc: TRUE/FALSE use HPC if available? [default: useHpc=TRUE]
 ##  verbose: TRUE/FALSE [default: verbose=FALSE]
 ##
 ## returns:
 ##  a list with intensity, mass and metadata (if removeMetaData == FALSE)
 ##
-##  spectrum$intensity, spectrum$tof, spectrum$mass, metadata
+##  spectrum$intensity, spectrum$tof, spectrum$mass, metaData
 ##
 readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     verbose=FALSE) {

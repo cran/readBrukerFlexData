@@ -136,8 +136,8 @@ library(readBrukerFlexData);
 exampleDirectory <- system.file("Examples", package="readBrukerFlexData");
 
 ## read example spectrum
-spec <- readBrukerFlexFile(paste(exampleDirectory,
-    "2010_05_19_Gibb_C8_A1/0_A1/1/1SLin/fid", sep="/"));
+spec <- readBrukerFlexFile(file.path(exampleDirectory,
+    "2010_05_19_Gibb_C8_A1/0_A1/1/1SLin/fid"));
 
 ## print metaData
 print(spec$metaData);
