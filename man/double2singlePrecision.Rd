@@ -45,7 +45,8 @@ Sebastian Gibb
     \code{\link{.hpc}}
 }
 \examples{
-library(readBrukerFlexData);
+## load library
+library("readBrukerFlexData");
 
 # more details
 options(digits=22);

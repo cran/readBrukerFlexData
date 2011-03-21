@@ -62,7 +62,8 @@ Sebastian Gibb
     \code{\link{.hpc}}
 }
 \examples{
-library(readBrukerFlexData);
+## load library
+library("readBrukerFlexData");
 
 ## get examples directory
 exampleDirectory <- system.file("Examples", package="readBrukerFlexData");

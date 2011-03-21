@@ -1,6 +1,9 @@
 RELEASE HISTORY OF THE "readBrukerFlexData" PACKAGE
 ===================================================
 
+Version 1.0.5 [2011-03-21]:
+- Surround package names by double quotes
+
 Version 1.0.4 [2011-02-19]:
 - Replace library reference in cpSpecHpcMzXml-data to readMzXmlData  
 - Replace all paste(directory, file, sep="/") by file.path(directory, file) 
