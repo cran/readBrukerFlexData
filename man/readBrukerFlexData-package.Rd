@@ -17,28 +17,31 @@ All trademarks are owned by or licensed to Bruker Daltonics.
 \tabular{ll}{                                                                                                                                     
 Package: \tab readBrukerFlexData\cr                                                                                                                   
 Type: \tab Package\cr                                                                                                                             
-Version: \tab 1.0.5\cr
-Date: \tab 2011-03-21\cr
+Version: \tab 1.1\cr
+Date: \tab 2011-05-28\cr
 License: \tab GPL(version 3 or later)\cr                                                                                                          
 }    
 
 Main functions:
 
-\code{\link{readBrukerFlexFile}}: Reads mass spectrometry data in 
+\code{\link[readBrukerFlexData]{readBrukerFlexFile}}: Reads mass spectrometry data in 
 Bruker Daltonics' XMASS format (fid and acqu file).
 
-\code{\link{readBrukerFlexDir}}: Reads recursively mass spectrometry data in
+\code{\link[readBrukerFlexData]{readBrukerFlexDir}}: Reads recursively mass spectrometry data in
 Bruker Daltonics' XMASS format. 
+
+\code{\link[readBrukerFlexData]{mqReadBrukerFlex}}: Reads mass spectrometry data into MALDIquant.
 }
 
 \author{Sebastian Gibb 
 
 Maintainer: Sebastian Gibb \email{mail@sebastiangibb.de}}
 \references{
-See website: \url{http://www.sebastiangibb.de/maldiquant/}
+See website: \url{http://www.strimmerlab.org/software/maldiquant/}
 }
 \keyword{IO}
 \seealso{
-    \code{\link{readBrukerFlexDir}}, 
-    \code{\link{readBrukerFlexFile}}
+    \code{\link[readBrukerFlexData]{readBrukerFlexDir}}, 
+    \code{\link[readBrukerFlexData]{readBrukerFlexFile}}
+    \code{\link[readBrukerFlexData]{mqReadBrukerFlex}}
 }

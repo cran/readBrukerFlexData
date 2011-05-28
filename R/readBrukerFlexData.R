@@ -68,6 +68,11 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
         }
     }
 
+    if (length(files) <= 0) {
+        warning("Directory doesn't contain any fid file.");
+        return(NA);
+    }
+
     ## resort files in correct order, using gtools package
     ## A1, A2, ..., A10, ..., B1, ...
     #files <- .mixedsort(files);

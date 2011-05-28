@@ -9,7 +9,7 @@
     precision (64bit, R: double(), C: double) to single precision (32bit, R: 
     none, C: float). \cr
     It is only needed for comparison between Bruker Daltonics' HPC and 
-    \code{\link{.hpc}}. \cr
+    \code{\link[readBrukerFlexData]{.hpc}}. \cr
     It follows IEEE 754 standard: 
     \url{http://754r.ucbtest.org/standards/754.pdf}
 }
@@ -42,7 +42,7 @@ IEEE 754 standard \cr
 Sebastian Gibb
 }
 \seealso{
-    \code{\link{.hpc}}
+    \code{\link[readBrukerFlexData]{.hpc}}
 }
 \examples{
 ## load library

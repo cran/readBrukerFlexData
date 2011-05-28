@@ -61,9 +61,9 @@ Please note that .hpc is not correct! You have been warned.
 }
 
 \seealso{
-    \code{\link{readBrukerFlexDir}},
-    \code{\link{readBrukerFlexFile}},
-    \code{\link{.double2singlePrecision}}
+    \code{\link[readBrukerFlexData]{readBrukerFlexDir}},
+    \code{\link[readBrukerFlexData]{readBrukerFlexFile}},
+    \code{\link[readBrukerFlexData]{.double2singlePrecision}}
 }
 \examples{
 ## load library

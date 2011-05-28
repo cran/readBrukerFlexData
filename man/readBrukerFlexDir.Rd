@@ -26,7 +26,7 @@ readBrukerFlexDir(brukerFlexDir, removeCalibrationScans=TRUE,
 }
     \item{useHpc}{
         logical. Should Bruker Daltonics' High Precision
-        Calibration be used if available? (see also: \code{\link{.hpc}})
+        Calibration be used if available? (see also: \code{\link[readBrukerFlexData]{.hpc}})
 }
     \item{useSpectraNames}{
         logical. If TRUE all list elements get an unique name from metaData
@@ -39,7 +39,7 @@ readBrukerFlexDir(brukerFlexDir, removeCalibrationScans=TRUE,
 }
 }
 \details{
-see \code{\link{readBrukerFlexFile}}
+see \code{\link[readBrukerFlexData]{readBrukerFlexFile}}
 }
 \value{
 A list of spectra.
@@ -58,8 +58,8 @@ A list of spectra.
 Sebastian Gibb
 }
 \seealso{
-    \code{\link{readBrukerFlexFile}},
-    \code{\link{.hpc}}
+    \code{\link[readBrukerFlexData]{readBrukerFlexFile}},
+    \code{\link[readBrukerFlexData]{.hpc}}
 }
 \examples{
 ## load library

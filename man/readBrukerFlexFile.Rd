@@ -21,7 +21,7 @@ readBrukerFlexFile(fidFile, removeMetaData=FALSE, useHpc=TRUE, verbose=FALSE)
 }
     \item{useHpc}{
         logical. Should Bruker Daltonics' High Precision
-        Calibration be used if available? (see also: \code{\link{.hpc}})
+        Calibration be used if available? (see also: \code{\link[readBrukerFlexData]{.hpc}})
 }
     \item{verbose}{
         logical. Print verbose messages?
@@ -126,8 +126,8 @@ A list of spectra and metadata.
 Sebastian Gibb
 }
 \seealso{
-    \code{\link{readBrukerFlexDir}},
-    \code{\link{.hpc}}
+    \code{\link[readBrukerFlexData]{readBrukerFlexDir}},
+    \code{\link[readBrukerFlexData]{.hpc}}
 }
 \examples{
 ## load library
