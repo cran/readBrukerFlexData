@@ -31,6 +31,8 @@
 ##  useHpc: TRUE/FALSE see .hpc/readBrukerFlexFile for details 
 ##          [default: useHPC=TRUE]
 ##  useSpectraNames: TRUE/FALSE [default: useSpectraNames=TRUE]
+##  filterZeroIntensities: compassXport removes zero intensities (0.0)
+##          [default: filterZeroIntensities=TRUE]
 ##  verbose: TRUE/FALSE [default: verbose=FALSE]
 ##
 ##  files:
@@ -47,13 +49,14 @@
 ##
 readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
         removeMetaData=FALSE, useHpc=TRUE, useSpectraNames=TRUE,
+        filterZeroIntensities=TRUE,
         verbose=FALSE) {
     if (verbose)
         message("Look for spectra in ", sQuote(brukerFlexDir), " ...");
 
     if ((!file.exists(brukerFlexDir)) || (!file.info(brukerFlexDir)$isdir)) {
-        warning("Directory ", sQuote(brukerFlexDir), " doesn't exists or is no
-                directory!");
+        warning("Directory ", sQuote(brukerFlexDir), 
+                " doesn't exists or is no directory!");
         return(NA);
     }
 
@@ -64,7 +67,7 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
     if (removeCalibrationScans) {
         calibrationScans <- grep(pattern="[Cc]alibration", x=files, value=TRUE);
         if (length(calibrationScans) > 0) {
-        files <- setdiff(files, calibrationScans);
+            files <- setdiff(files, calibrationScans);
         }
     }
 
@@ -89,7 +92,8 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
     ## read fid files
     brukerFlexData <- lapply(X=files, FUN=function(f) {
             return(readBrukerFlexFile(fidFile=f, removeMetaData=removeMetaData,
-                    useHpc=useHpc, verbose=verbose)); });
+                    useHpc=useHpc, filterZeroIntensities=filterZeroIntensities,
+                    verbose=verbose)); });
 
     if (!removeMetaData & useSpectraNames) {
         ## rewrite names if metadata exists
@@ -118,6 +122,8 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
 ##  removeMetaData: if TRUE => don't return metadata to save memory 
 ##                  [default: removeMetaData=FALSE]
 ##  useHpc: TRUE/FALSE use HPC if available? [default: useHpc=TRUE]
+##  filterZeroIntensities: compassXport removes zero intensities (0.0)
+##          [default: filterZeroIntensities=TRUE]
 ##  verbose: TRUE/FALSE [default: verbose=FALSE]
 ##
 ## returns:
@@ -126,7 +132,7 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
 ##  spectrum$intensity, spectrum$tof, spectrum$mass, metaData
 ##
 readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
-    verbose=FALSE) {
+                               filterZeroIntensities=TRUE, verbose=FALSE) {
     ## try to get absolute file path
     fidFile <- normalizePath(fidFile);
 
@@ -160,9 +166,11 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     ## data. To save on operation time and to keep export file sizes small,
     ## CompassXport 3.0.3 will filter out zero (0.0) intensities
     ## when exporting to mzXML or mzData ..."
-    notNull <- intensity>0;
-    intensity <- intensity[notNull];
-    tof <- tof[notNull];
+    if (filterZeroIntensities) {
+        notNull <- intensity>0;
+        intensity <- intensity[notNull];
+        tof <- tof[notNull];
+    }
 
     ## calculate mass of TOFs
     mass <- .tof2mass(tof, 
@@ -183,7 +191,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     if (isHPCused) {
         ## TODO: fix equations in .hpc and remove the following warning 
         warning("The spectrum file ", sQuote(fidFile), " uses HPC.\n",
-                "HPC isn't fully supported by readBrukerFlexFile",
+                "HPC isn't fully supported by readBrukerFlexFile. ",
                 "Please see ", dQuote("?.hpc"), " for details.\n",
                 "Original mass are ", sQuote("metaData$backup$mass"), ".");
         metaData$backup$mass <- mass;
@@ -534,7 +542,8 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     }
 
     con <- file(fidFile, "rb");
-    intensity <- readBin(con, integer(), n=nIntensities, size=4, endian="little");
+    intensity <- readBin(con, integer(), n=nIntensities, size=4,
+                         endian="little");
     close(con);
 
     return(intensity);
@@ -562,10 +571,8 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     ##  .IONIZATION MODE=  LD+
     ##  $INSTRUM= <AUTOFLEX>
 
-    ## remove front pattern
-    tmpLine <- sub("^.*= *<?", replacement="", tmpLine);
-    ## remove back pattern
-    tmpLine <- sub(">? *$", replacement="", tmpLine);
+    ## remove front/back pattern environment
+    tmpLine <- gsub("(^.*= *<?)|(>? *$)", replacement="", tmpLine);
 
     return(tmpLine);
 }
@@ -590,11 +597,8 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ##  sampleName: e.g Pankreas_HB_L_061019_A10
 ##
 .sampleName <- function(fidFile) {
-  # remove double slashes created by pasting path="example/path/" and "/file"
-  fidFile <- gsub(pattern="//+", replacement="/", x=fidFile);
-
   # create array of directories (each element == one directory)
-  dirs <- strsplit(x=fidFile, split="/", fixed=TRUE)[[1]];
+  dirs <- strsplit(x=fidFile, split="/+")[[1]];
 
   numDirs <- length(dirs);
 
@@ -604,9 +608,9 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     sampleName <- dirs[numDirs-4];
 
     # -, : or something like that causes errors in names()
+    # TODO: use make.names in future releases?
     sampleName <- gsub(pattern="[[:punct:]]|[[:space:]]", replacement="_",
-            x=sampleName);
-
+                       x=sampleName);
   } 
 
   return(sampleName);
@@ -677,12 +681,19 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ##  double vector of mass
 ##
 .tof2mass <- function(tof, c1, c2, c3) {
-    ## 0 = A * (sqrt(m/z))^2 + B * sqrt(m/z) + C(times)
     A <- c3;
     B <- sqrt(1e12/c1);
     C <- c2 - tof;
 
-    return( ( (-B + sqrt(B^2 - (4 * A * C)))/(2 * A) )^2  );
+    if (A == 0) {
+        ## linear:
+        ## 0 = B * sqrt(m/z) + C(times)
+        return( (C*C)/(B*B) );
+    } else {
+        ## quadratic:
+        ## 0 = A * (sqrt(m/z))^2 + B * sqrt(m/z) + C(times)
+        return( ( (-B + sqrt((B*B) - (4 * A * C)))/(2 * A) )^2  );
+    }
 }
 
 ## function .hpc
@@ -705,11 +716,11 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ##
 ##  params are imported from metadata (acqu-file)
 ##
-## TODO: 
+## TODO:
 ##  - internal calibration (or something like that)
-##  - maybe need the following: 
-##      ##$Hpcgc0= 237.647814332814                                                                                                                       
-##      ##$Hpcgc2= -0.0467016003168749 
+##  - maybe need the following:
+##      ##$Hpcgc0= 237.647814332814
+##      ##$Hpcgc2= -0.0467016003168749
 ##
 ## params:
 ##  mass: vector with already calculated mass (used .tof2mass)

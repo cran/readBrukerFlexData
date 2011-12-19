@@ -10,7 +10,8 @@ a specified directory.
 }
 \usage{
 readBrukerFlexDir(brukerFlexDir, removeCalibrationScans=TRUE, 
-    removeMetaData=FALSE, useHpc=TRUE, useSpectraNames=TRUE, verbose=FALSE)
+    removeMetaData=FALSE, useHpc=TRUE, useSpectraNames=TRUE,
+    filterZeroIntensities=TRUE, verbose=FALSE)
 }
 \arguments{
     \item{brukerFlexDir}{
@@ -33,6 +34,10 @@ readBrukerFlexDir(brukerFlexDir, removeCalibrationScans=TRUE,
         otherwise file path is used.
         (If \sQuote{removeMetaData} is TRUE \sQuote{useSpectraNames} has no 
         effect.)
+}
+    \item{filterZeroIntensities}{
+        logical. If TRUE all intensities equal 0.0 are removed. (see also:
+        \code{\link[readBrukerFlexData]{readBrukerFlexFile}})
 }
     \item{verbose}{
         logical. Print verbose messages?

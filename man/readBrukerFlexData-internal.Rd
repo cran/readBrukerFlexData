@@ -1,6 +1,5 @@
 \name{readBrukerFlexData-internal}
 
-\alias{.changePrecision}
 \alias{.readAcquFile}
 \alias{.readFidFile}
 \alias{.grepAcquValue}

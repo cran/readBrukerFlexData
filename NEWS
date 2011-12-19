@@ -1,6 +1,11 @@
 RELEASE HISTORY OF THE "readBrukerFlexData" PACKAGE
 ===================================================
 
+Version 1.2 [2011-12-19]:
+- Add filterZeroIntensities parameter to readBrukerFlexFile
+- Fix bug which produced NaN's if ML3==0
+  (reported and patched by Julien Textoris)
+
 Version 1.1 [2011-05-28]:
 - Add mqReadBrukerFlex 
 - Depends on R>=2.10
