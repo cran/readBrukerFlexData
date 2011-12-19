@@ -11,7 +11,7 @@ a specified directory.
 \usage{
 readBrukerFlexDir(brukerFlexDir, removeCalibrationScans=TRUE, 
     removeMetaData=FALSE, useHpc=TRUE, useSpectraNames=TRUE,
-    filterZeroIntensities=TRUE, verbose=FALSE)
+    filterZeroIntensities=FALSE, verbose=FALSE)
 }
 \arguments{
     \item{brukerFlexDir}{
@@ -36,8 +36,9 @@ readBrukerFlexDir(brukerFlexDir, removeCalibrationScans=TRUE,
         effect.)
 }
     \item{filterZeroIntensities}{
-        logical. If TRUE all intensities equal 0.0 are removed. (see also:
-        \code{\link[readBrukerFlexData]{readBrukerFlexFile}})
+        logical. Don't change it. If TRUE all intensities equal 0.0 are
+        removed.
+        (see also: \code{\link[readBrukerFlexData]{readBrukerFlexFile}})
 }
     \item{verbose}{
         logical. Print verbose messages?

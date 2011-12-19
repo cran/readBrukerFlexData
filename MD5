@@ -1,10 +1,10 @@
-6c8a8b8ddde5598a4bf2e80bee73f6ed *DESCRIPTION
+812ad21d445a5f16d3761db23a1dea13 *DESCRIPTION
 d32239bcb673463ab874e80d47fae504 *LICENSE
 34604d5da7796b47405598941d2931ad *NAMESPACE
-1e618d767000aefcd24add1c32fbfa1d *NEWS
+9e75abebda02fda45852fb1112348793 *NEWS
 a788baec6e40540d56266467fb4a8c2c *R/double2singlePrecision.R
 f1d6b843b15b2df3360b4bfd7f24680b *R/mqReadBrukerFlex.R
-49291329925d7689e59c37b1ac39c3d4 *R/readBrukerFlexData.R
+fc1e20baa17794c9110aaa202c57ba00 *R/readBrukerFlexData.R
 0a984d7b36f80792aaf6170017d7655b *data/cpSpecHpcMzXml.RData
 e5305c9066b13ad272def4dbe36a1d0d *inst/Examples/2010_05_19_Gibb_C8_A1/0_A1/1/1SLin/acqu
 e5305c9066b13ad272def4dbe36a1d0d *inst/Examples/2010_05_19_Gibb_C8_A1/0_A1/1/1SLin/acqus
@@ -30,9 +30,9 @@ c54a489a11362626e4f34416a2f1f083 *inst/Examples/hpc/fid/0_A20/1/1SRef/pdata/1/pr
 4fe5886da4a17568cb4c1a7ed0f2e4fa *inst/Examples/hpc/mzXML/hpc.mzXML
 924219b759a1f3093fb1cd89b9c5e781 *man/cpSpecHpcMzXml.Rd
 c9d265f18f278dbffd3be5695e58a6da *man/double2singlePrecision.Rd
-545baf07a1dd9357c48fbef896fabb7b *man/hpc.Rd
+1668b56ef5cc6b1858e2c4740a8393bc *man/hpc.Rd
 c8f7b74fdf56125dc5d2be895ad299eb *man/mqReadBrukerFlex.Rd
 15cad87b92f8a6be37bc7c8358611c8a *man/readBrukerFlexData-internal.Rd
-a346d28592cb9476e5d1822a0c6c5b4b *man/readBrukerFlexData-package.Rd
-500e20cffcb369951444da17f3c8aa1b *man/readBrukerFlexDir.Rd
-61984619fd5d0915569fa5360408b76d *man/readBrukerFlexFile.Rd
+c0613a166996a27165fb588acaddfd8d *man/readBrukerFlexData-package.Rd
+159682a27c84daa6fa91bdb9389d224b *man/readBrukerFlexDir.Rd
+09417d47fc218af9a59e1579c9253723 *man/readBrukerFlexFile.Rd

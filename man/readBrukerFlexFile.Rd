@@ -10,7 +10,7 @@ Bruker Daltonics' mass spectrometer of *flex series.
 }
 \usage{
 readBrukerFlexFile(fidFile, removeMetaData=FALSE, useHpc=TRUE,
-    filterZeroIntensities=TRUE, verbose=FALSE)
+    filterZeroIntensities=FALSE, verbose=FALSE)
 }
 \arguments{
     \item{fidFile}{
@@ -25,7 +25,7 @@ readBrukerFlexFile(fidFile, removeMetaData=FALSE, useHpc=TRUE,
         Calibration be used if available? (see also: \code{\link[readBrukerFlexData]{.hpc}})
 }
     \item{filterZeroIntensities}{
-        logical. If TRUE all intensities equal 0.0 are removed. (see also: \sQuote{Details} section)
+        logical. Don't change it. If TRUE all intensities equal 0.0 are removed. (see also: \sQuote{Details} section)
 }
     \item{verbose}{
         logical. Print verbose messages?
@@ -110,8 +110,9 @@ full current path to fid file \tab metaData$file \tab path on local machine \cr
 sample name \tab metaData$sampleName \tab - \cr
 }
 
-\code{filterZeroIntensities}: If TRUE all intensities equal zero are removed.
-This parameter exists only to be compatible to Bruker Daltonics' CompassXport's 
+\code{filterZeroIntensities}: Change default value is \bold{not recommended}!
+If TRUE all intensities equal zero are removed. 
+This parameter exists only to be compatible to Bruker Daltonics' CompassXport's
 mzXML export function. For details see: 
 \sQuote{Release Notes for CompassXport 3.0.3},
 cap. 6 \sQuote{Filtering of Zero Intensities}:

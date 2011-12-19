@@ -32,7 +32,7 @@
 ##          [default: useHPC=TRUE]
 ##  useSpectraNames: TRUE/FALSE [default: useSpectraNames=TRUE]
 ##  filterZeroIntensities: compassXport removes zero intensities (0.0)
-##          [default: filterZeroIntensities=TRUE]
+##          [default: filterZeroIntensities=FALSE]
 ##  verbose: TRUE/FALSE [default: verbose=FALSE]
 ##
 ##  files:
@@ -49,7 +49,7 @@
 ##
 readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
         removeMetaData=FALSE, useHpc=TRUE, useSpectraNames=TRUE,
-        filterZeroIntensities=TRUE,
+        filterZeroIntensities=FALSE,
         verbose=FALSE) {
     if (verbose)
         message("Look for spectra in ", sQuote(brukerFlexDir), " ...");
@@ -123,7 +123,7 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
 ##                  [default: removeMetaData=FALSE]
 ##  useHpc: TRUE/FALSE use HPC if available? [default: useHpc=TRUE]
 ##  filterZeroIntensities: compassXport removes zero intensities (0.0)
-##          [default: filterZeroIntensities=TRUE]
+##          [default: filterZeroIntensities=FALSE]
 ##  verbose: TRUE/FALSE [default: verbose=FALSE]
 ##
 ## returns:
@@ -132,7 +132,7 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
 ##  spectrum$intensity, spectrum$tof, spectrum$mass, metaData
 ##
 readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
-                               filterZeroIntensities=TRUE, verbose=FALSE) {
+                               filterZeroIntensities=FALSE, verbose=FALSE) {
     ## try to get absolute file path
     fidFile <- normalizePath(fidFile);
 

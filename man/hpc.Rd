@@ -73,8 +73,10 @@ library("readBrukerFlexData");
 exampleDirectory <- system.file("Examples", package="readBrukerFlexData");
 
 ## read example spectra
+## please note: filterZeroIntensities=TRUE is used for compatibility reasons.
+##              You should NOT use it!
 spec <- readBrukerFlexFile(file.path(exampleDirectory, 
-    "hpc/fid/0_A20/1/1SRef/fid"));
+    "hpc/fid/0_A20/1/1SRef/fid"), filterZeroIntensities=TRUE);
 
 ## plot spectrum 
 plot(spec$metaData$backup$mass, spec$spectrum$intensity, type="l", col="red", 
