@@ -1,10 +1,10 @@
-812ad21d445a5f16d3761db23a1dea13 *DESCRIPTION
+b586695f35e24c898fd2e7f472524c66 *DESCRIPTION
 d32239bcb673463ab874e80d47fae504 *LICENSE
 34604d5da7796b47405598941d2931ad *NAMESPACE
-9e75abebda02fda45852fb1112348793 *NEWS
+6e72359aee3cf9ad155b2f91fcedc6e2 *NEWS
 a788baec6e40540d56266467fb4a8c2c *R/double2singlePrecision.R
 f1d6b843b15b2df3360b4bfd7f24680b *R/mqReadBrukerFlex.R
-fc1e20baa17794c9110aaa202c57ba00 *R/readBrukerFlexData.R
+5e8331738aade79f99b1c4d4d6629c8a *R/readBrukerFlexData.R
 0a984d7b36f80792aaf6170017d7655b *data/cpSpecHpcMzXml.RData
 e5305c9066b13ad272def4dbe36a1d0d *inst/Examples/2010_05_19_Gibb_C8_A1/0_A1/1/1SLin/acqu
 e5305c9066b13ad272def4dbe36a1d0d *inst/Examples/2010_05_19_Gibb_C8_A1/0_A1/1/1SLin/acqus
@@ -33,6 +33,6 @@ c9d265f18f278dbffd3be5695e58a6da *man/double2singlePrecision.Rd
 1668b56ef5cc6b1858e2c4740a8393bc *man/hpc.Rd
 c8f7b74fdf56125dc5d2be895ad299eb *man/mqReadBrukerFlex.Rd
 15cad87b92f8a6be37bc7c8358611c8a *man/readBrukerFlexData-internal.Rd
-c0613a166996a27165fb588acaddfd8d *man/readBrukerFlexData-package.Rd
+351d62558281d2ba49c7819ef6667bc9 *man/readBrukerFlexData-package.Rd
 159682a27c84daa6fa91bdb9389d224b *man/readBrukerFlexDir.Rd
 09417d47fc218af9a59e1579c9253723 *man/readBrukerFlexFile.Rd

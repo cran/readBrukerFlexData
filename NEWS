@@ -1,6 +1,9 @@
 RELEASE HISTORY OF THE "readBrukerFlexData" PACKAGE
 ===================================================
 
+Version 1.2.2 [2012-01-18]:
+- Fix warning message "empty spectrum"
+
 Version 1.2.1 [2011-12-19]:
 - Set default value filterZeroIntensities=FALSE
 

@@ -1,6 +1,6 @@
 ## $Id:readBrukerFlexData.R 381 2011-02-15 15:58:49Z sgibb $
 ##
-## Copyright 2010-2011 Sebastian Gibb
+## Copyright 2010-2012 Sebastian Gibb
 ## <mail@sebastiangibb.de>
 ##
 ## This file is part of readBrukerFlexData for R and related languages.
@@ -482,8 +482,8 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
         as.double(.grepAcquValue("##\\$NoSHOTS=", acquLines));
 
     if (metaData$laserShots == 0) {
-        warning("File ", sQuote(fidFile), " seems to be empty because
-            no laser shots applied to this sample.")
+        warning("File ", sQuote(fidFile), " seems to be empty because ",
+                "no laser shots applied to this sample.");
     }
 
     metaData$patch <- .grepAcquValue("##\\$PATCHNO=", acquLines);
