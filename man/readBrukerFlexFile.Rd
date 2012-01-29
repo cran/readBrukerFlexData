@@ -37,6 +37,7 @@ readBrukerFlexFile has to import the following data to calculating mass from
 
 \tabular{lll}{
 acqu-value \tab becomes metaData \tab description \cr
+$BYTORDA \tab metaData$byteOrder \tab endianness of fid file \cr
 $TD \tab metaData$number \tab total number of measured time periods \cr
 $DELAY \tab metaData$timeDelay \tab first measured intensity after 
   \emph{metaData$timeDelay} ns \cr

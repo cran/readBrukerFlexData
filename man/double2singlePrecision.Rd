@@ -11,7 +11,8 @@
     It is only needed for comparison between Bruker Daltonics' HPC and 
     \code{\link[readBrukerFlexData]{.hpc}}. \cr
     It follows IEEE 754 standard: 
-    \url{http://754r.ucbtest.org/standards/754.pdf}
+    \url{http://754r.ucbtest.org/standards/754.pdf} \cr
+    This is an internal function and should normally not used by the user.
 }
 \usage{
 .double2singlePrecision(x)

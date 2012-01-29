@@ -153,7 +153,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     metaData <- .readAcquFile(fidFile=fidFile, verbose=verbose);
 
     ## read peak intensities 
-    intensity <- .readFidFile(fidFile, metaData$number);
+    intensity <- .readFidFile(fidFile, metaData$number, metaData$byteOrder);
 
     ## calculate tof of metadata
     tof <- metaData$timeDelay + ((0:(metaData$number-1)) * metaData$timeDelta);
@@ -213,6 +213,8 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ##  reads acqu file
 ##
 ##  we have to import the following data to calculating mass:
+##  $BYTORDA: endianness, 0==little, 1==big
+##      => metaData$byteOrder
 ##  $TD: total number of measured time periods
 ##      => metaData$number
 ##  $DELAY: first measured intensity after $DELAY ns
@@ -319,6 +321,8 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ## returns:
 ##  a list with metadata
 ##
+##  $byteOrder
+##
 ##  $number
 ##  $timeDelay
 ##  $timeDelta
@@ -389,6 +393,10 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 
     ## collect data
     metaData <- list();
+
+    ## endianness
+    isBigEndian <- as.integer(.grepAcquValue("##\\$BYTORDA=", acquLines)) == 1;
+    metaData$byteOrder <- ifelse(isBigEndian, "big", "little");
 
     ## obligate
     metaData$number <- as.double(.grepAcquValue("##\\$TD=", acquLines));
@@ -531,11 +539,12 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ## params:
 ##  fidFile: path to fid file e.g. Pankreas_HB_L_061019_A10/0_a19/1/1SLin/fid
 ##  nIntensities: number of data entries (total count; get from acqu file)
+##  endian: endianness of the fid file; ("little" or "big"; default: "little")
 ##
 ## returns:
 ##  a vector of intensity values 
 ##
-.readFidFile <- function(fidFile, nIntensities) {
+.readFidFile <- function(fidFile, nIntensities, endian="little") {
     if (!file.exists(fidFile)) {
         warning("File ", sQuote(fidFile), " doesn't exists!");
         return(NA);
@@ -543,7 +552,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 
     con <- file(fidFile, "rb");
     intensity <- readBin(con, integer(), n=nIntensities, size=4,
-                         endian="little");
+                         endian=endian);
     close(con);
 
     return(intensity);

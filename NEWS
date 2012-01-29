@@ -1,6 +1,11 @@
 RELEASE HISTORY OF THE "readBrukerFlexData" PACKAGE
 ===================================================
 
+Version 1.2.3 [2012-01-29]:
+- Fetch endianness of fid file from acqu file
+- Change NAMESPACE
+- Hide .hpc by NAMESPACE
+
 Version 1.2.2 [2012-01-18]:
 - Fix warning message "empty spectrum"
 

@@ -117,7 +117,7 @@ cat("without .hpc:\n",
 ##
 ## doing things manually
 ##
-hpcMass <- .hpc(mass=spec$metaData$backup$mass,
+hpcMass <- readBrukerFlexData:::.hpc(mass=spec$metaData$backup$mass,
                 minMass=spec$metaData$hpc$limits["minMass"],
                 maxMass=spec$metaData$hpc$limits["maxMass"],
                 hpcCoefficients=spec$metaData$hpc$coefficients);
