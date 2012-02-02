@@ -1,6 +1,10 @@
 RELEASE HISTORY OF THE "readBrukerFlexData" PACKAGE
 ===================================================
 
+Version 1.2.4 [2012-02-02]:
+- Accept comma as decimal mark in acqu files
+- Replace some warning()'s by stop()'s
+
 Version 1.2.3 [2012-01-29]:
 - Fetch endianness of fid file from acqu file
 - Change NAMESPACE
