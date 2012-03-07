@@ -619,8 +619,12 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 ##  sampleName: e.g Pankreas_HB_L_061019_A10
 ##
 .sampleName <- function(fidFile) {
+  # regular expression for directory separator (on unix: /+, on windows \+)
+  # sadly .Platform$file.sep == "/" on both
+  fidFile <- chartr(old="\\", new="/", x=fidFile);
+
   # create array of directories (each element == one directory)
-  dirs <- strsplit(x=fidFile, split="/+")[[1]];
+  dirs <- strsplit(x=fidFile, split="/")[[1]];
 
   numDirs <- length(dirs);
 

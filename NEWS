@@ -1,6 +1,9 @@
 RELEASE HISTORY OF THE "readBrukerFlexData" PACKAGE
 ===================================================
 
+Version 1.2.5 [2012-03-07]:
+- fix directory separator handling for sampleName on windows
+
 Version 1.2.4 [2012-02-02]:
 - Accept comma as decimal mark in acqu files
 - Replace some warning()'s by stop()'s
