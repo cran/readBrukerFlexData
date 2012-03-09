@@ -199,14 +199,15 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
                      maxMass=metaData$hpcLimits["maxMass"],
                      hpcCoefficients=metaData$hpcCoefficients);
     }
+
+    spectrum <- list(tof=tof, mass=mass, intensity=intensity);
   
     if (!removeMetaData) {
-        return(list(spectrum=list(tof=tof, mass=mass, intensity=intensity), metaData=metaData));
+        return(list(spectrum=spectrum, metaData=metaData));
     } else {
-        return(list(spectrum=list(tof=tof, mass=mass, intensity=intensity)));
+        return(list(spectrum=spectrum, metaData=list(file=metaData$file)));
     }
 }
-
 ## function .readAcquFile
 ##  reads acqu file
 ##
@@ -398,8 +399,8 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 
     ## obligate
     metaData$number <- as.double(.grepAcquValue("##\\$TD=", acquLines));
-    metaData$timeDelay <- as.double(.grepAcquValue("##\\$DELAY=", acquLines));
-    metaData$timeDelta <- as.double(.grepAcquValue("##\\$DW=", acquLines));
+    metaData$timeDelay <- .grepAcquDoubleValue("##\\$DELAY=", acquLines);
+    metaData$timeDelta <- .grepAcquDoubleValue("##\\$DW=", acquLines);
     metaData$calibrationConstants <- c(
         c1=.grepAcquDoubleValue("##\\$ML1=", acquLines), 
         c2=.grepAcquDoubleValue("##\\$ML2=", acquLines),

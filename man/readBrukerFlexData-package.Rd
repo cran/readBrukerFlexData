@@ -17,8 +17,8 @@ All trademarks are owned by or licensed to Bruker Daltonics.
 \tabular{ll}{
 Package: \tab readBrukerFlexData\cr
 Type: \tab Package\cr
-Version: \tab 1.2.5\cr
-Date: \tab 2012-03-07\cr
+Version: \tab 1.2.7\cr
+Date: \tab 2012-03-09\cr
 License: \tab GPL (version 3 or later)\cr
 }    
 

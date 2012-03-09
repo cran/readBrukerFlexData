@@ -18,7 +18,7 @@ readBrukerFlexFile(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 }
     \item{removeMetaData}{
         logical. To calculate mass data a lot of meta data are needed. To save
-        memory they could delete after calculation. 
+        memory they could be deleted after calculation.
 }
     \item{useHpc}{
         logical. Should Bruker Daltonics' High Precision
