@@ -58,5 +58,4 @@ num <- 1/3;
 num;
 readBrukerFlexData:::.double2singlePrecision(num);
 }
-\keyword{misc}
-
+\keyword{internal}

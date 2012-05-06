@@ -27,10 +27,7 @@ See \code{\link[readBrukerFlexData]{readBrukerFlexDir}} or
 \code{\link[readBrukerFlexData]{readBrukerFlexFile}}.
 }
 \value{
-    Returns a \code{\link[MALDIquant]{MassSpectrum-class}} object
-    if \emph{path} is/contains only one fid file. \cr
-    Returns a list of \code{\link[MALDIquant]{MassSpectrum-class}} objects
-    if \emph{path} contains multiple fid files.
+    Returns a list of \code{\link[MALDIquant]{MassSpectrum-class}} objects.
 }
 \references{                                                                                                                                                                                 
 See website: \url{http://strimmerlab.org/software/maldiquant/}                                                                                                                               
@@ -56,7 +53,7 @@ spec <- mqReadBrukerFlex(file.path(exampleDirectory, "2010_05_19_Gibb_C8_A1"));
 
 ## plot spectra
 par(mfrow=c(2, 1));
-lapply(spec, function(x)plot(x));
+lapply(spec, plot);
 par(mfrow=c(1, 1));
 }
 \keyword{IO}

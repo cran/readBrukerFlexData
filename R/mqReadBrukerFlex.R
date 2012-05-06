@@ -1,4 +1,4 @@
-## Copyright 2010-2011 Sebastian Gibb
+## Copyright 2010-2012 Sebastian Gibb
 ## <mail@sebastiangibb.de>
 ##
 ## This file is part of readBrukerFlexData for R and related languages.
@@ -39,20 +39,16 @@ mqReadBrukerFlex <- function(path, ...) {
 
     if (!file.info(path)$isdir) {
         s <- readBrukerFlexFile(fidFile=path, ...);
-        return(createMassSpectrum(mass=s$spectrum$mass,
-                                  intensity=s$spectrum$intensity,
-                                  metaData=s$metaData));
+        return(list(createMassSpectrum(mass=s$spectrum$mass,
+                                       intensity=s$spectrum$intensity,
+                                       metaData=s$metaData)));
     } else {
         s <- readBrukerFlexDir(brukerFlexDir=path, ...);
         s <- lapply(s, function(x) {
                     return(createMassSpectrum(mass=x$spectrum$mass,
                                               intensity=x$spectrum$intensity,
                                               metaData=x$metaData)); });
-        if (length(s) == 1) {
-            return(s[[1]]);
-        } else {
-            return(s);
-        }
+        return(s);
     }
 }
 

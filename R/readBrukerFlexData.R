@@ -462,10 +462,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     metaData$laserAttenuation <- 
         .grepAcquDoubleValue("##\\$ATTEN=", acquLines);
 
-    metaData$comments <- c(.grepAcquValue("##\\$CMT1=", acquLines),
-                           .grepAcquValue("##\\$CMT2=", acquLines),
-                           .grepAcquValue("##\\$CMT3=", acquLines),
-                           .grepAcquValue("##\\$CMT4=", acquLines));
+    metaData$comments <- .grepAcquValue("##\\$CMT.*=", acquLines);
 
     metaData$deflection <- 
         as.logical(.grepAcquValue("##\\$DEFLON=", acquLines) == "yes");
@@ -576,7 +573,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
     ##  $INSTRUM= <AUTOFLEX>
 
     ## remove front/back pattern environment
-    tmpLine <- gsub("(^.*= *<?)|(>? *$)", replacement="", tmpLine);
+    tmpLine <- gsub(pattern="(^.*= *<?)|(>? *$)", replacement="", x=tmpLine);
 
     return(tmpLine);
 }
