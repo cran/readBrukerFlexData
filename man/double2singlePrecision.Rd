@@ -1,61 +1,48 @@
 \name{.double2singlePrecision}
 \alias{.double2singlePrecision}
-
-\title{
-    Converts double to single precision.
-}
-\description{
-    This method simulate the conversion of floating point numbers from double
-    precision (64bit, R: double(), C: double) to single precision (32bit, R: 
-    none, C: float). \cr
-    It is only needed for comparison between Bruker Daltonics' HPC and 
-    \code{\link[readBrukerFlexData]{.hpc}}. \cr
-    It follows IEEE 754 standard: 
-    \url{http://754r.ucbtest.org/standards/754.pdf} \cr
-    This is an internal function and should normally not used by the user.
-}
+\title{Converts double to single precision.}
 \usage{
-.double2singlePrecision(x)
+  .double2singlePrecision(x)
 }
 \arguments{
-    \item{x}{
-        double. Numeric value which should reduce from double precision to 
-        single precision.
-}
-}
-\details{
-The same could be done in C by using casts: \cr
-\preformatted{
-double precision32(double value) {
-    float x = value;
-    return (double)x;
-}
-}
+  \item{x}{\code{double}, numeric value which should reduce
+  from double precision to single precision.}
 }
 \value{
-double (in single precision).
+  \code{double} (in single precision).
 }
-\references{
-IEEE 754 standard \cr
-\url{http://754r.ucbtest.org/standards/754.pdf}
+\description{
+  This function simulates the conversion of floating point
+  numbers from double precision (64bit, R: \code{double()},
+  C: \code{double}) to single precision (32bit, R:
+  \code{none}, C: \code{float}). It follows IEEE 754
+  standard.
 }
-\author{
-Sebastian Gibb
-}
-\seealso{
-    \code{\link[readBrukerFlexData]{.hpc}}
+\details{
+  The same could be done in C by using casts:
+  \preformatted{ double precision32(double value) { float
+  x=value; return (double)x; }}
 }
 \examples{
 ## load library
 library("readBrukerFlexData");
 
-# more details
-options(digits=22);
+## more details
+options(digits=22)
 
-# a test number
-num <- 1/3;
+## a test number
+num <- 1/3
 
-num;
-readBrukerFlexData:::.double2singlePrecision(num);
+num
+readBrukerFlexData:::.double2singlePrecision(num)
+}
+\references{
+  IEEE 754 standard:
+  \url{http://754r.ucbtest.org/standards/754.pdf}
+}
+\seealso{
+  \code{\link[readBrukerFlexData]{.changePrecision}},
+  \code{\link[readBrukerFlexData]{.hpc}}
 }
 \keyword{internal}
+

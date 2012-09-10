@@ -1,94 +1,84 @@
 \name{readBrukerFlexDir}
 \alias{readBrukerFlexDir}
-
-\title{
-Reads recursively mass spectrometry data in Bruker Daltonics' XMASS format.
-}
-\description{
-Reads recursively all mass spectrometry data in Bruker Daltonics' XMASS format in
-a specified directory.
-}
+\title{Reads recursively mass spectrometry data in Bruker Daltonics' XMASS format.}
 \usage{
-readBrukerFlexDir(brukerFlexDir, removeCalibrationScans=TRUE, 
-    removeMetaData=FALSE, useHpc=TRUE, useSpectraNames=TRUE,
-    filterZeroIntensities=FALSE, verbose=FALSE)
+  readBrukerFlexDir(brukerFlexDir,
+    removeCalibrationScans = TRUE, removeMetaData = FALSE,
+    useHpc = TRUE, useSpectraNames = TRUE,
+    filterZeroIntensities = FALSE, verbose = FALSE)
 }
 \arguments{
-    \item{brukerFlexDir}{
-        Path to \emph{directory} which should be read recursively.
-}
-    \item{removeCalibrationScans}{
-        logical. If TRUE all scans in directories called [Cc]alibration will be
-        ignored.
-}
-    \item{removeMetaData}{
-        logical. To calculate mass data a lot of meta data are needed. To save
-        memory they could delete after calculation. 
-}
-    \item{useHpc}{
-        logical. Should Bruker Daltonics' High Precision
-        Calibration be used if available? (see also: \code{\link[readBrukerFlexData]{.hpc}})
-}
-    \item{useSpectraNames}{
-        logical. If TRUE all list elements get an unique name from metaData
-        otherwise file path is used.
-        (If \sQuote{removeMetaData} is TRUE \sQuote{useSpectraNames} has no 
-        effect.)
-}
-    \item{filterZeroIntensities}{
-        logical. Don't change it. If TRUE all intensities equal 0.0 are
-        removed.
-        (see also: \code{\link[readBrukerFlexData]{readBrukerFlexFile}})
-}
-    \item{verbose}{
-        logical. Print verbose messages?
-}
-}
-\details{
-see \code{\link[readBrukerFlexData]{readBrukerFlexFile}}
+  \item{brukerFlexDir}{\code{character}, path to
+  \emph{directory} which should be read recursively.}
+
+  \item{removeCalibrationScans}{\code{logical}, if
+  \code{TRUE} all scans in directories called
+  \code{[Cc]alibration} will be ignored.}
+
+  \item{removeMetaData}{\code{logical}, to calculate mass
+  data a lot of meta data are needed. To save memory they
+  could be deleted after calculation.}
+
+  \item{useHpc}{\code{logical}, should Bruker Daltonics'
+  High Precision Calibration be used if available? (see
+  also: \code{\link[readBrukerFlexData]{.hpc}})}
+
+  \item{useSpectraNames}{\code{logical}, if \code{TRUE} all
+  list elements get an unique name from metaData otherwise
+  file path is used.  (If \sQuote{removeMetaData} is
+  \code{TRUE} \sQuote{useSpectraNames} has no effect.)}
+
+  \item{filterZeroIntensities}{\code{logical}, don't change
+  it. If \code{TRUE} all intensities equal \code{0.0} are
+  removed.  (see also:
+  \code{\link[readBrukerFlexData]{readBrukerFlexFile}})}
+
+  \item{verbose}{\code{logical}, print verbose messages?}
 }
 \value{
-A list of spectra.
-
-    \item{[[1]]$spectrum$mass}{
-        A vector of calculated mass.
+  A \code{list} of spectra. \itemize{
+  \item{\code{[[1]]$spectrum$mass}: }{A vector of
+  calculated mass.} \item{\code{[[1]]$spectrum$intensity}:
+  }{A vector of intensity values.}
+  \item{\code{[[1]]$metaData}: }{A list of metaData
+  depending on read spectrum.} }
 }
-    \item{[[1]]$spectrum$intensity}{
-        A vector of intensity values. 
+\description{
+  This function leads recursively all mass spectrometry
+  data in Bruker Daltonics' XMASS format in a specified
+  directory.
 }
-    \item{[[1]]$metaData}{
-        A list of metaData depending on read spectrum.
-}
-}
-\author{
-Sebastian Gibb
-}
-\seealso{
-    \code{\link[readBrukerFlexData]{readBrukerFlexFile}},
-    \code{\link[readBrukerFlexData]{.hpc}}
+\details{
+  See \code{\link[readBrukerFlexData]{readBrukerFlexFile}}.
 }
 \examples{
 ## load library
-library("readBrukerFlexData");
+library("readBrukerFlexData")
 
 ## get examples directory
-exampleDirectory <- system.file("Examples", package="readBrukerFlexData");
+exampleDirectory <- system.file("Examples", package="readBrukerFlexData")
 
 ## read example spectra
-spec <- readBrukerFlexDir(file.path(exampleDirectory, "2010_05_19_Gibb_C8_A1"));
+spec <- readBrukerFlexDir(file.path(exampleDirectory,
+  "2010_05_19_Gibb_C8_A1"))
 
 ## plot spectra
-plot(spec[[1]]$spectrum$mass, spec[[1]]$spectrum$intensity, type="n");
+plot(spec[[1]]$spectrum$mass, spec[[1]]$spectrum$intensity, type="n")
 
-l <- length(spec);
-legendStr <- character(l);
+l <- length(spec)
+legendStr <- character(l)
 for (i in seq(along=spec)) {
-    lines(spec[[i]]$spectrum$mass, spec[[i]]$spectrum$intensity, type="l",
-    col=rainbow(l)[i]);
-    legendStr[i] <- spec[[i]]$metaData$fullName;
+  lines(spec[[i]]$spectrum$mass, spec[[i]]$spectrum$intensity, type="l",
+        col=rainbow(l)[i])
+  legendStr[i] <- spec[[i]]$metaData$fullName
 }
 
 ## draw legend
-legend(x="topright", legend=legendStr, col=rainbow(l), lwd=1);
+legend(x="topright", legend=legendStr, col=rainbow(l), lwd=1)
+}
+\seealso{
+  \code{\link[readBrukerFlexData]{readBrukerFlexFile}},
+  \code{\link[readBrukerFlexData]{.hpc}}
 }
 \keyword{IO}
+
