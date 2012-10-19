@@ -1,6 +1,6 @@
 Package: readBrukerFlexData
-Version: 1.4
-Date: 2012-09-10
+Version: 1.5
+Date: 2012-10-19
 Title: Reads mass spectrometry data in Bruker *flex format
 Authors@R: person("Sebastian", "Gibb", role=c("aut", "cre"),
         email="mail@sebastiangibb.de")
@@ -18,8 +18,8 @@ Collate: 'cpSpecHpcMzXml-data.R' 'double2singlePrecision-functions.R'
         'readAcquFile-functions.R' 'readBrukerFlexDir-functions.R'
         'readBrukerFlexFile-functions.R' 'readFidFile-functions.R'
         'sampleName-functions.R' 'tof2mass-functions.R'
-Packaged: 2012-09-10 17:09:44 UTC; sgibb
+Packaged: 2012-10-22 15:37:09 UTC; sebastian
 Author: Sebastian Gibb [aut, cre]
 Maintainer: Sebastian Gibb <mail@sebastiangibb.de>
 Repository: CRAN
-Date/Publication: 2012-09-11 06:09:39
+Date/Publication: 2012-10-22 15:58:30
