@@ -30,9 +30,9 @@
 #'
 #' Package: \tab readBrukerFlexData \cr
 #'
-#' Version: \tab 1.6\cr
+#' Version: \tab 1.6.1\cr
 #'
-#' Date: \tab 2012-12-08\cr
+#' Date: \tab 2013-03-28\cr
 #'
 #' License: \tab GPL (>= 3)\cr
 #'
@@ -42,7 +42,7 @@
 #' 
 #' @docType package
 #' @name readBrukerFlexData-package
-#' @author Sebastian Gibb <\email{mail@@sebastiangibb.de}>
+#' @author Sebastian Gibb \email{mail@@sebastiangibb.de}
 #' @references \url{https://github.com/sgibb/readBrukerFlexData} 
 #' @keywords package
 #'
