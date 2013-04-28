@@ -1,13 +1,13 @@
-f849e6caa76cc2ddbd86dec57322b080 *DESCRIPTION
+02f46a2ba3c4f2d50e0b890d57f10155 *DESCRIPTION
 65fc6706cbe7df7357e5263263819dd9 *NAMESPACE
-ba46e6a46da78e822ee6e804905a5452 *NEWS
+07bb64ee3099b985bd79c2cb93ba3604 *NEWS
 3af5176f5a2d53bd7e33999b75483b94 *R/cpSpecHpcMzXml-data.R
 45f6ac1c7e92d8d7389aada0cabcb582 *R/double2singlePrecision-functions.R
 508a7700b53501ac07707350afec7298 *R/grepAcquValue-functions.R
 163b36e97a59fa8b76d8af3d9a816046 *R/hpc-functions.R
 ebf4bdc6b0dd815233cffb4649134f20 *R/mqReadBrukerFlex-functions.R
-624bcb2ad7106afef4aaaa85b3c05639 *R/package.R
-c294a3fde4519a237e3006cd18936d3c *R/readAcquFile-functions.R
+b0398fcdd9349c124e0fcc85474417b4 *R/package.R
+cd2df5624232c12162bacfe63ddfa48d *R/readAcquFile-functions.R
 18ca2f6efe4e9da078c64be2603eb502 *R/readBrukerFlexDir-functions.R
 8f294f381169781825a528fe24ff5b4e *R/readBrukerFlexFile-functions.R
 ff2f7beb66e03dd18493cef44f4def87 *R/readFidFile-functions.R
@@ -30,7 +30,7 @@ f2f27a1d880dfdd1880adf8bc4380e4c *inst/Examples/2010_05_19_Gibb_C8_A1/0_A2/1/1SL
 cf45f46aae2d99c71b792d6fb1e8b515 *man/hpc.Rd
 a4226c7349413ff3894a5c0bd81b7104 *man/mqReadBrukerFlex.Rd
 9a4819360982becb78a60c94c60cfcf7 *man/readAcquFile.Rd
-26a7eeda9f6f522b80329ff798430a3b *man/readBrukerFlexData-package.Rd
+d100d8a65316e146e078356db97178c1 *man/readBrukerFlexData-package.Rd
 8fecadc9c3d34b6fbb4b2922d3351429 *man/readBrukerFlexDir.Rd
 dafdc373b8b3d97170f340f3c3aec676 *man/readBrukerFlexFile.Rd
 ff781b8dd8d027cabae93d761b590fb3 *man/readFidFile.Rd
