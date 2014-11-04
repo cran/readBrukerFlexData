@@ -152,6 +152,7 @@
 #' @export
 #' @seealso
 #'  \url{https://github.com/sgibb/readBrukerFlexData/wiki},
+#'  \code{\link[MALDIquantForeign]{importBrukerFlex}},
 #'  \code{\link[readBrukerFlexData]{readBrukerFlexDir}},
 #'  \code{\link[readBrukerFlexData]{.hpc}}
 #' @keywords IO
@@ -232,11 +233,7 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 
   ## was HPC involved?
   ## metaData$hpcUse seems to be always true
-  isHPCused <- (useHpc &
-                metaData$hpcUse &
-                metaData$hpcLimits["maxMass"] > 0 &
-                metaData$hpcLimits["minMass"] > 0 &
-                metaData$hpcOrder > 0)
+  isHPCused <- isTRUE(useHpc & length(metaData$hpcCoefficients))
 
   if (isHPCused) {
     ## TODO: fix equations in .hpc and remove the following warning
@@ -252,8 +249,8 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
   ## TODO: add LIFT support
 
   ## was LIFT involved?
-  isLIFTused <- all(metaData$lift != 0) || metaData$tlift != 0 ||
-                metaData$spectrumType == "LIFT"
+  isLIFTused <- isTRUE(all(metaData$lift != 0) || metaData$tlift != 0 ||
+                       metaData$spectrumType == "LIFT")
 
   if (isLIFTused) {
     ## TODO: add LIFT support
