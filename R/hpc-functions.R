@@ -40,8 +40,8 @@
 #'  a \code{list}:
 #'  \itemize{
 #'    \item{\code{hpcConstants$coefficients}: }{double, vector of coefficents}
-#'    \item{\code{hpcConstants$calibrationContant0}: }{c0}
-#'    \item{\code{hpcConstants$calibrationContant2}: }{c2}
+#'    \item{\code{hpcConstants$calibrationConstant0}: }{c0}
+#'    \item{\code{hpcConstants$calibrationConstant2}: }{c2}
 #'  }
 #'
 #' @seealso \code{\link[readBrukerFlexData]{.hpc}}
@@ -49,22 +49,15 @@
 #' @keywords internal
 #'
 .extractHPCConstants <- function(hpcStr) {
-  tmpLine <- strsplit(x=hpcStr, split=" ")[[1]]
+  tmpLine <- strsplit(x=hpcStr, split=" ")[[1L]]
   ## remove emtpy elements
-  tmpLine <- tmpLine[tmpLine != ""]
-
-  hpcConstants <- list()
+  tmpLine <- tmpLine[nzchar(tmpLine)]
 
   ## extract only coefficients
-  hpcConstants$coefficients <-
-    as.double(tmpLine[(which(tmpLine == "V1.0VectorDouble") + 2):(which(tmpLine == "c2") - 1)])
-
-  hpcConstants$calibrationConstant2 <-
-    as.double(tmpLine[which(tmpLine == "c2") + 1])
-  hpcConstants$calibrationConstant0 <-
-    as.double(tmpLine[which(tmpLine == "c0") + 1])
-
-  return(hpcConstants)
+  list(coefficients=as.double(tmpLine[(which(tmpLine == "V1.0VectorDouble") + 2L):
+                           (which(tmpLine == "c2") - 1L)]),
+       calibrationConstant0=as.double(tmpLine[which(tmpLine == "c0") + 1L]),
+       calibrationConstant2=as.double(tmpLine[which(tmpLine == "c2") + 1L]))
 }
 
 #' High Precision Calibration
@@ -194,13 +187,13 @@
 
   ## correction=c[0] + c[1]*cal_mass^1 + ... + c[n]*cal_mass^n
   ## mass=cal_mass - correction
-  l <- length(hpcCoefficients) - 1
+  l <- length(hpcCoefficients) - 1L
   m <- sapply(m, function(x) {
-    return(x - sum(hpcCoefficients * x^(0:l)))
+    x - sum(hpcCoefficients * x^(0L:l))
   })
 
   mass[hpcRange] <- m
 
-  return(mass)
+  mass
 }
 

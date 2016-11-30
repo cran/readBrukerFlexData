@@ -102,7 +102,7 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
   ## remove calibrations scans?
   if (removeCalibrationScans) {
     calibrationScans <- grep(pattern="[Cc]alibration", x=files, value=TRUE)
-    if (length(calibrationScans) > 0) {
+    if (length(calibrationScans)) {
       files <- setdiff(files, calibrationScans)
     }
   }
@@ -112,17 +112,14 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
   }
 
   ## generate 'path/files'
-  files <- sapply(files, function(x) {
-    x <- file.path(brukerFlexDir, x)
-    return(x)
-  })
+  files <- file.path(brukerFlexDir, files)
 
   ## read fid files
   brukerFlexData <- lapply(X=files, FUN=function(f) {
-    return(readBrukerFlexFile(fidFile=f, removeMetaData=removeMetaData,
-                              useHpc=useHpc,
-                              filterZeroIntensities=filterZeroIntensities,
-                              verbose=verbose))
+    readBrukerFlexFile(fidFile=f, removeMetaData=removeMetaData,
+                       useHpc=useHpc,
+                       filterZeroIntensities=filterZeroIntensities,
+                       verbose=verbose)
   })
 
   if (!removeMetaData & useSpectraNames) {
@@ -142,6 +139,6 @@ readBrukerFlexDir <- function(brukerFlexDir, removeCalibrationScans=TRUE,
     }, USE.NAMES=FALSE)
   }
 
-  return(brukerFlexData)
+  brukerFlexData
 }
 

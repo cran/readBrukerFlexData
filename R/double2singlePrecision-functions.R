@@ -38,7 +38,7 @@
 #' @rdname double2singlePrecision
 #' @keywords internal
 #' @references
-#' IEEE 754 standard: \url{http://754r.ucbtest.org/standards/754.pdf}
+#' IEEE 754 standard: \url{http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=30711&filter=AND(p_Publication_Number:2355)}
 #' @examples
 #' ## load library
 #' library("readBrukerFlexData")
@@ -58,7 +58,7 @@
 #'
 .double2singlePrecision <- function(x) {
   stopifnot(is.double(x))
-  return(.changePrecision(x, size=4))
+  .changePrecision(x, size=4L)
 }
 
 #' Change precision.
@@ -84,7 +84,6 @@
   ## size==8 # 64bit, double precision
   virtualCon <- writeBin(object=x, con=virtualCon, size=size)
   ## re-read data
-  x <- readBin(con=virtualCon, what=double(), size=size, n=length(x))
-  return(x)
+  readBin(con=virtualCon, what=double(), size=size, n=length(x))
 }
 

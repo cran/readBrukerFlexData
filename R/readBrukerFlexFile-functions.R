@@ -199,6 +199,14 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
   ## read peak intensities
   intensity <- .readFidFile(fidFile, metaData$number, metaData$byteOrder)
 
+  ## some fid files have less intensity values as reported in acqu
+  if (length(intensity) < metaData$number) {
+    metaData$number <- length(intensity)
+    warning("The number of tof/mass values reported in the acqu file is greater ",
+            "than the number of intensity values in the fid file. ",
+            "The extra tof/mass values are removed.")
+  }
+
   ## calculate tof of metadata
   tof <- as.double(metaData$timeDelay +
                    ((0:(metaData$number-1)) * metaData$timeDelta))
@@ -225,9 +233,9 @@ readBrukerFlexFile <- function(fidFile, removeMetaData=FALSE, useHpc=TRUE,
 
   ## calculate mass of TOFs
   mass <- .tof2mass(tof,
-                    metaData$calibrationConstants[[1]],
-                    metaData$calibrationConstants[[2]],
-                    metaData$calibrationConstants[[3]])
+                    metaData$calibrationConstants[[1L]],
+                    metaData$calibrationConstants[[2L]],
+                    metaData$calibrationConstants[[3L]])
 
   ## TODO: fix equations in .hpc
 
