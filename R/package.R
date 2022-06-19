@@ -14,7 +14,7 @@
 ## GNU General Public License for more details.
 ##
 ## You should have received a copy of the GNU General Public License
-## along with readBrukerFlexData. If not, see <http://www.gnu.org/licenses/>
+## along with readBrukerFlexData. If not, see <https://www.gnu.org/licenses/>
 
 #' The readBrukerFlexData Package
 #'
@@ -25,20 +25,6 @@
 #' Bruker Daltonics.
 #' \cr \cr
 #' All trademarks are owned by or licensed to Bruker Daltonics.
-#'
-#' \tabular{ll}{
-#'
-#' Package: \tab readBrukerFlexData \cr
-#'
-#' Version: \tab 1.8.5\cr
-#'
-#' Date: \tab 2017-04-22\cr
-#'
-#' License: \tab GPL (>= 3)\cr
-#'
-#' URL: \tab \url{https://github.com/sgibb/readBrukerFlexData}\cr
-#'
-#' }
 #'
 #' @docType package
 #' @name readBrukerFlexData-package

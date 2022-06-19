@@ -14,7 +14,7 @@
 ## GNU General Public License for more details.
 ##
 ## You should have received a copy of the GNU General Public License
-## along with readBrukerFlexData. If not, see <http://www.gnu.org/licenses/>
+## along with readBrukerFlexData. If not, see <https://www.gnu.org/licenses/>
 
 #' Reads an acqu file.
 #'
@@ -187,9 +187,14 @@
   }
 
   # https://github.com/sgibb/MALDIquantForeign/issues/19
+  # https://github.com/sgibb/readBrukerFlexData/issues/3
   metaData$v1tofCalibration <-
     grepl("V1.0CTOF2CalibrationConstants",
           .grepAcquValue("##\\$NTBCal=", acquLines))
+  metaData$v1tofCalibrationConstants <- 
+    .extractV10CTOF2CalibrationConstants(
+      .grepAcquValue("##\\$NTBCal=", acquLines)
+    )
 
   ## obligate LIFT
   metaData$lift <- c(.grepAcquDoubleValue("##\\$Lift1=", acquLines),
