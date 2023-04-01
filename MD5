@@ -1,13 +1,13 @@
-a8feba950ce72bc9590f8dea55f18547 *DESCRIPTION
+aa80e40d98d77604c1c383b9567e9354 *DESCRIPTION
 e1052c0b606efcbee33069b4e1e739f1 *NAMESPACE
-4ffcd2dd05e495439dd14dd2c14c9f9d *NEWS
+583750a0eee2ef51b9759fcd959413cc *NEWS
 64fcd626331cb4da41ec3ea987572942 *R/cpSpecHpcMzXml-data.R
 9b202461518a15cf78b89fb46ffcf3af *R/double2singlePrecision-functions.R
 4fbd363947ca0c25f3c4b1308897ee00 *R/grepAcquValue-functions.R
 0a4ea61b34b4bf06d1451c77c04658d3 *R/hpc-functions.R
 16f90c39acc4efc93654d0252d2bfef8 *R/ntbcal-functions.R
 80fdea20d9cbdb491c34a244b38c5b25 *R/package.R
-951c05ef193b8185c42b4d4494acabbc *R/readAcquFile-functions.R
+d8c1441d793efa845cff200813713c6d *R/readAcquFile-functions.R
 ff3b412cd881bcd82015dd8fe94b3196 *R/readBrukerFlexDir-functions.R
 f9af5e121b19bdb13ad26d913c7e3f7a *R/readBrukerFlexFile-functions.R
 bad6d94dd617b03a2c740b0e42c97be1 *R/readFidFile-functions.R
