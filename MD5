@@ -1,11 +1,11 @@
-08838bdcc20a5957e9501e567da09987 *DESCRIPTION
+f316614c096869ec6fddf50f5a93561c *DESCRIPTION
 e1052c0b606efcbee33069b4e1e739f1 *NAMESPACE
-7f46182132ce0bf767c44eabfcb464a9 *NEWS
+2a792f087dfb0216bf83d62d21698012 *NEWS
 64fcd626331cb4da41ec3ea987572942 *R/cpSpecHpcMzXml-data.R
 9b202461518a15cf78b89fb46ffcf3af *R/double2singlePrecision-functions.R
 4fbd363947ca0c25f3c4b1308897ee00 *R/grepAcquValue-functions.R
 0414754a5ac19318e9c359774d7197b1 *R/hpc-functions.R
-16f90c39acc4efc93654d0252d2bfef8 *R/ntbcal-functions.R
+38d0e7dfe0eace742a2d6e48a82785cd *R/ntbcal-functions.R
 b56dcc7ef449cd390a265d6263bca7c2 *R/package.R
 0d4fa28625ea73ad14bae9606a3502f0 *R/readAcquFile-functions.R
 80a77c398690ea6f455499bb334be3e6 *R/readBrukerFlexDir-functions.R
@@ -38,6 +38,6 @@ ce8d9195e07df3ca71c485fda295ad6e *man/readBrukerFlexDir.Rd
 90d61c092baddf3291086974a4f38471 *man/sampleName.Rd
 892794332cc2b4b7780d9b6c8c197feb *man/tof2mass.Rd
 43d4aa8775b4336d497d0fdf319833d0 *tests/testthat.R
-558cb4b5031fab90a4bd349640923f9b *tests/testthat/test_ntbcal-functions.R
+c52829588674ca564f316926d6ffb0ef *tests/testthat/test_ntbcal-functions.R
 b9b416b1bb7f7741eb740714be63ecdb *tests/testthat/test_readBrukerFlexFile.R
-09cb6d985d252286daacf6cc9fef8d9d *tests/testthat/test_sampleName.R
+9ce8b040c4c508d25e39519866d09033 *tests/testthat/test_sampleName.R
